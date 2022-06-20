@@ -20,14 +20,16 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             
-            Color.blue
+            LinearGradient(colors: [.blue, .black], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
             
             VStack(spacing: 20) {
                 
                 VStack{
                     Text("Choose the flag of ")
+                        .font(.subheadline.weight(.heavy))
                     Text("\(contries[rightCountry])")
+                        .font(.largeTitle.weight(.semibold))
                 }.foregroundColor(.white)
                 
                 ForEach(0..<3) { number in
@@ -36,6 +38,8 @@ struct ContentView: View {
                     } label: {
                         Image(contries[number])
                                                 .renderingMode(.original)
+                                                .clipShape(Capsule())
+                                                .shadow(radius: 5)
                     }
                 }
             }
